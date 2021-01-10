@@ -1,6 +1,13 @@
 require 'rakuten_web_service'
 require 'aws-record'
 
+class SearchGolfApp
+  include Aws::Record
+  integer_attr :golf_course_id, hash_key: true
+  integer_attr :duration1
+  integer_attr :duration2
+end
+
 def lambda_handler(event:, context:)
   date = event['date'].to_s.insert(4, '-').insert(7, '-')
   budget = event['budget']
